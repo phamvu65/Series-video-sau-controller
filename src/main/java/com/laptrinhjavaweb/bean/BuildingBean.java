@@ -6,6 +6,7 @@ public class BuildingBean {
 	private String name;
 	private Integer floorArea;
 	private Long[] buildingIds;
+	private String address;
 	
 	public String getName() {
 		return name;
@@ -30,6 +31,12 @@ public class BuildingBean {
 	}
 	public void setBuildingIds(Long[] buildingIds) {
 		this.buildingIds = buildingIds;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 }

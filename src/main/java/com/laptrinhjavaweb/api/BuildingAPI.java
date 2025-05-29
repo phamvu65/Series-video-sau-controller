@@ -17,13 +17,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.deser.BuilderBasedDeserializer;
+import com.laptrinhjavaweb.bean.AssignmentBuildingBean;
 import com.laptrinhjavaweb.bean.BuildingBean;
+import com.laptrinhjavaweb.bean.ErrorResponseBean;
 
 //@Controller
 @RestController
+@RequestMapping("/api/building")
 public class BuildingAPI {
 
-	@GetMapping("/api/building")
+	@GetMapping
 	public List<BuildingBean> getBuilding(@RequestParam(value = "name", required = false) String name ,
 														@RequestParam(value = "street", required = false) String street ,
 														@RequestParam(value = "numberOfBasement", required = false) Integer numberOfBasement ,
@@ -34,19 +37,44 @@ public class BuildingAPI {
 		return results;
 	}
 
-	@PostMapping("/api/building")
-	public BuildingBean createBuilding(@RequestBody BuildingBean newBuilding){		
-		return null;
+//	@PostMapping("/api/building")
+//	public BuildingBean createBuilding(@RequestBody BuildingBean newBuilding){	
+//		System.out.println(10/0);
+//		return newBuilding;
+//	}
+	
+	@PostMapping
+	public Object createBuilding(@RequestBody BuildingBean newBuilding){	
+		try {
+			
+			System.out.println(10/0);
+			//sucess
+			return newBuilding;
+		} catch (Exception e) {
+			//return detail error
+			ErrorResponseBean errorResponseBean = new ErrorResponseBean();
+			errorResponseBean.setError(e.getMessage());
+			List<String> details = new ArrayList<>();
+			details.add("Sao mà 1 số có thể chia cho 0 được");
+			errorResponseBean.setDetails(details);
+			return errorResponseBean;
+		}
 	}
 	
-	@PutMapping("/api/building")
+	@PutMapping
 	public BuildingBean updateBuilding(@RequestBody BuildingBean updateBuilding){
 		System.out.println(updateBuilding);
 		return null;
 	}
 	
-	@DeleteMapping("/api/building")
+	@DeleteMapping
 	public void deleteBuilding(@RequestBody Long[] ids ){
 		System.out.println("ok");
 	}
+	
+	@PostMapping("/assignment")
+	public void assignmentBuilding(@RequestBody AssignmentBuildingBean assignmentBuildingBean ){
+		System.out.println("ok");
+	}
+	
 }

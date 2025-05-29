@@ -16,7 +16,7 @@ public class UserAPI {
 //		List<UserBean> results = new ArrayList<>();
 //		return results;
 //	}
-	@GetMapping("/api/users")
+	@GetMapping("/api/users")	
 	public List<UserBean> getStaffs(@RequestParam(value = "buildingid", required = false) Long buildingId,
 									@RequestParam(value = "role", required = false) String roleCode ){
 		List<UserBean> results = new ArrayList<>();
