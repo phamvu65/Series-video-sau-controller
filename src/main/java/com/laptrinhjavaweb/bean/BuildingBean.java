@@ -1,12 +1,12 @@
 package com.laptrinhjavaweb.bean;
 
 public class BuildingBean {
-
 	private Long id;
 	private String name;
 	private Integer floorArea;
 	private Long[] buildingIds;
 	private String address;
+	private Integer numberOfBasement;
 	
 	public String getName() {
 		return name;
@@ -37,6 +37,12 @@ public class BuildingBean {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public Integer getNumberOfBasement() {
+		return numberOfBasement;
+	}
+	public void setNumberOfBasement(Integer numberOfBasement) {
+		this.numberOfBasement = numberOfBasement;
 	}
 
 }

@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.deser.BuilderBasedDeserializer;
 import com.laptrinhjavaweb.bean.AssignmentBuildingBean;
 import com.laptrinhjavaweb.bean.BuildingBean;
 import com.laptrinhjavaweb.bean.ErrorResponseBean;
+import com.laptrinhjavaweb.customexception.FieldRequiredException;
 
 //@Controller
 @RestController
@@ -44,28 +45,23 @@ public class BuildingAPI {
 //	}
 	
 	@PostMapping
-	public Object createBuilding(@RequestBody BuildingBean newBuilding){	
-		try {
-			
-			System.out.println(10/0);
-			//sucess
+	public BuildingBean createBuilding(@RequestBody BuildingBean newBuilding){	
+			validateData(newBuilding);
 			return newBuilding;
-		} catch (Exception e) {
-			//return detail error
-			ErrorResponseBean errorResponseBean = new ErrorResponseBean();
-			errorResponseBean.setError(e.getMessage());
-			List<String> details = new ArrayList<>();
-			details.add("Sao mà 1 số có thể chia cho 0 được");
-			errorResponseBean.setDetails(details);
-			return errorResponseBean;
-		}
+	}
+
+	private void validateData(BuildingBean newBuilding) {
+	if(newBuilding.getName()==null || newBuilding.getName().equals("") || newBuilding.getNumberOfBasement()==null) {
+		throw new FieldRequiredException("name or numberofbasement is required ");
+		
+	}
+}
+
+	@PutMapping
+	public BuildingBean updateBuilding(@RequestBody BuildingBean updateBuilding){	
+		return updateBuilding;
 	}
 	
-	@PutMapping
-	public BuildingBean updateBuilding(@RequestBody BuildingBean updateBuilding){
-		System.out.println(updateBuilding);
-		return null;
-	}
 	
 	@DeleteMapping
 	public void deleteBuilding(@RequestBody Long[] ids ){
