@@ -8,6 +8,7 @@ public class BuildingBean {
 	private String address;
 	private Integer numberOfBasement;
 	
+	
 	public String getName() {
 		return name;
 	}
@@ -44,5 +45,6 @@ public class BuildingBean {
 	public void setNumberOfBasement(Integer numberOfBasement) {
 		this.numberOfBasement = numberOfBasement;
 	}
+
 
 }
