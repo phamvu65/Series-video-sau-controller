@@ -1,5 +1,11 @@
 package com.laptrinhjavaweb.service;
 
-public interface BuildingService {
+import java.util.List;
 
+import com.laptrinhjavaweb.model.response.BuildingSearchResponse;
+
+
+
+public interface BuildingService {
+	List<BuildingSearchResponse> findAll();
 }

@@ -1,31 +1,12 @@
-package com.laptrinhjavaweb.entity;
+package com.laptrinhjavaweb.model;
 
-public class BuildingEntity {
+public class BuildingDTO {
+
 	private Long id;
 	private String name;
 	private Integer floorArea;
 	private Long[] buildingIds;
-	private String street;
-	private String ward;
-	private Long districtId;
-	public String getStreet() {
-		return street;
-	}
-	public void setStreet(String street) {
-		this.street = street;
-	}
-	public String getWard() {
-		return ward;
-	}
-	public void setWard(String ward) {
-		this.ward = ward;
-	}
-	public Long getDistrictId() {
-		return districtId;
-	}
-	public void setDistrictId(Long districtId) {
-		this.districtId = districtId;
-	}
+	private String address;
 	private Integer numberOfBasement;
 	
 	
@@ -53,12 +34,17 @@ public class BuildingEntity {
 	public void setBuildingIds(Long[] buildingIds) {
 		this.buildingIds = buildingIds;
 	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public Integer getNumberOfBasement() {
 		return numberOfBasement;
 	}
 	public void setNumberOfBasement(Integer numberOfBasement) {
 		this.numberOfBasement = numberOfBasement;
 	}
-	
 
 }
