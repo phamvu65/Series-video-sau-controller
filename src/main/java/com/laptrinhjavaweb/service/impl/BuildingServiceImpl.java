@@ -28,6 +28,7 @@ public class BuildingServiceImpl implements BuildingService{
 			buildingSearchResponse.setName(item.getName());
 			buildingSearchResponse.setAddress(item.getStreet()+"-"+item.getWard());
 			buildingSearchResponse.setFloorArea(item.getFloorArea());
+			buildingSearchResponse.setNumberOfBasement(item.getNumberOfBasement());
 			results.add(buildingSearchResponse);
 		}
 		return results;

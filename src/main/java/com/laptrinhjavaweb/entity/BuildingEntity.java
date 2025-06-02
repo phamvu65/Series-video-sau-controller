@@ -8,6 +8,7 @@ public class BuildingEntity {
 	private String street;
 	private String ward;
 	private Long districtId;
+	private Integer numberOfBasement;
 	public String getStreet() {
 		return street;
 	}
@@ -26,7 +27,7 @@ public class BuildingEntity {
 	public void setDistrictId(Long districtId) {
 		this.districtId = districtId;
 	}
-	private Integer numberOfBasement;
+
 	
 	
 	public String getName() {

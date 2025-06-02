@@ -5,7 +5,7 @@ public class BuildingSearchResponse {
 	  private String name;
 	    private Integer floorArea;
 	    private String address;
-	    private Long numberOfBasement;
+	    private Integer numberOfBasement;
 		public String getName() {
 			return name;
 		}
@@ -20,10 +20,10 @@ public class BuildingSearchResponse {
 		}
 
 
-		public Long getNumberOfBasement() {
+		public Integer getNumberOfBasement() {
 			return numberOfBasement;
 		}
-		public void setNumberOfBasement(Long numberOfBasement) {
+		public void setNumberOfBasement(Integer numberOfBasement) {
 			this.numberOfBasement = numberOfBasement;
 		}
 		public String getAddress() {
