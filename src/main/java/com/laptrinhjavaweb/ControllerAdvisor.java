@@ -30,7 +30,6 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler  {
 		ErrorResponseBean result = new ErrorResponseBean();
 		result.setError(ex.getMessage());
 		List<String> details = new ArrayList<>();
-		//details.add("Sao mà 1 số có thể chia cho 0 được");
 		result.setDetails(details);
         return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
     }

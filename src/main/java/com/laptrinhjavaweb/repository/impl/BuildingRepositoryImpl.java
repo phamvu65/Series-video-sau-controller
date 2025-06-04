@@ -41,5 +41,4 @@ public class BuildingRepositoryImpl implements BuildingRepository {
 		}
 		return null;
 	}
-
 }
