@@ -1,6 +1,7 @@
 package com.laptrinhjavaweb.api;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.laptrinhjavaweb.bean.AssignmentBuildingBean;
-import com.laptrinhjavaweb.bean.BuildingBean;
 import com.laptrinhjavaweb.customexception.FieldRequiredException;
+import com.laptrinhjavaweb.model.BuildingDTO;
 import com.laptrinhjavaweb.model.response.BuildingSearchResponse;
 import com.laptrinhjavaweb.service.BuildingService;
 
@@ -28,28 +28,18 @@ public class BuildingAPI {
 	private BuildingService buildingService;
 
 	@GetMapping
-	public List<BuildingSearchResponse> getBuilding(@RequestParam(value = "name", required = false) String name,
-			@RequestParam(value = "street", required = false) String street,
-			@RequestParam(value = "numberOfBasement", required = false) Integer numberOfBasement,
-			@RequestParam(value = "types", required = false) List<String> types) {
-//		List<BuildingSearchResponse> results = new ArrayList<>();
-//		List<BuildingFilter>  buildingFilters= buildingService.findAll();	
-//		for(BuildingFilter item:buildingFilters) {
-//			BuildingSearchResponse buildingSearchResponse = new BuildingSearchResponse();
-//			buildingSearchResponse.setName(item.getName());
-//			buildingSearchResponse.setAddress(item.getAddress());
-//			results.add(buildingSearchResponse);
-//		}
-		List<BuildingSearchResponse> results= buildingService.findAll();	
+	public List<BuildingSearchResponse> getBuilding(@RequestParam Map<String, Object> params,
+			@RequestParam(value = "typeBuilding", required = false) List<String> typeBuilding) {
+		List<BuildingSearchResponse> results= buildingService.findAll(params,typeBuilding);	
 		return results;
 	}
 	@PostMapping
-	public BuildingBean createBuilding(@RequestBody BuildingBean newBuilding) {
+	public BuildingDTO createBuilding(@RequestBody BuildingDTO newBuilding) {
 		validateData(newBuilding);
 		return newBuilding;
 	}
 
-	private void validateData(BuildingBean newBuilding) {
+	private void validateData(BuildingDTO newBuilding) {
 		if (newBuilding.getName() == null || newBuilding.getName().equals("")
 				|| newBuilding.getNumberOfBasement() == null) {
 			throw new FieldRequiredException("name or numberofbasement is required ");
@@ -58,7 +48,7 @@ public class BuildingAPI {
 	}
 
 	@PutMapping
-	public BuildingBean updateBuilding(@RequestBody BuildingBean updateBuilding) {
+	public BuildingDTO updateBuilding(@RequestBody BuildingDTO updateBuilding) {
 		return updateBuilding;
 	}
 
@@ -67,9 +57,5 @@ public class BuildingAPI {
 		System.out.println("ok");
 	}
 
-	@PostMapping("/assignment")
-	public void assignmentBuilding(@RequestBody AssignmentBuildingBean assignmentBuildingBean) {
-		System.out.println("ok");
-	}
 
 }

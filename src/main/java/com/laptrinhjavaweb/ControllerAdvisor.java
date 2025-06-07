@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.laptrinhjavaweb.bean.ErrorResponseBean;
 import com.laptrinhjavaweb.customexception.FieldRequiredException;
+import com.laptrinhjavaweb.model.response.ResponseDTO;
 
 @ControllerAdvice
 public class ControllerAdvisor extends ResponseEntityExceptionHandler  {
 	@ExceptionHandler(ArithmeticException.class)
-    public ResponseEntity<ErrorResponseBean> handleArithmeticException(ArithmeticException ex, WebRequest request) {
-		ErrorResponseBean result = new ErrorResponseBean();
+    public ResponseEntity<ResponseDTO> handleArithmeticException(ArithmeticException ex, WebRequest request) {
+		ResponseDTO result = new ResponseDTO();
 		result.setError(ex.getMessage());
 		List<String> details = new ArrayList<>();
 		details.add("Sao mà 1 số có thể chia cho 0 được");
@@ -26,8 +26,8 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler  {
     }
 	
 	@ExceptionHandler(FieldRequiredException.class)
-    public ResponseEntity<ErrorResponseBean> handleFieldRequiredException(FieldRequiredException ex, WebRequest request) {
-		ErrorResponseBean result = new ErrorResponseBean();
+    public ResponseEntity<ResponseDTO> handleFieldRequiredException(FieldRequiredException ex, WebRequest request) {
+		ResponseDTO result = new ResponseDTO();
 		result.setError(ex.getMessage());
 		List<String> details = new ArrayList<>();
 		result.setDetails(details);
